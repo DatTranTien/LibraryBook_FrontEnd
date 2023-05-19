@@ -26,6 +26,15 @@
                     <div class="col-md-10 col-lg-8 mx-auto text-center">
                         <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
                         <h2 class="text-white mb-5">Log In!</h2>
+                        
+                        
+                        
+                        <!-- <% if(typeof(message) != 'undefined'){ %> -->
+                            <!-- <h4 style="color: red; font-size: larger;">fsdgdfgdf</h4> -->
+                        <!-- <% } %> -->
+
+
+                        
                         <!-- * * * * * * * * * * * * * * *-->
                         <!-- * * SB Forms Contact Form * *-->
                         <!-- * * * * * * * * * * * * * * *-->
@@ -33,27 +42,44 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
-                        <form class="form-signup" id="contactForm" action="/login" method="post">
+
+                        
+                        <form class="form-signup" 
+                        id="contactForm" action="/login" method="post" enctype="multipart/form-data">
                             <!-- Email address input-->
+                            <% if(typeof(message) != 'undefined'){ %>
+                                <h4 style="color: red; font-size: larger;"> <%-messages%> </h4>
+                                <% } %>
                             <div class=" input-group-newsletter">
-                                <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
-                                <div class="col"><input class="form-control" id="password" type="password" placeholder="Enter password..." aria-label="Enter password..."  /></div>
-                                <div class="col-auto"><button class="btn btn-primary " id="submitButton" type="submit">Log In!</button></div>
-                            </div>
-                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">An email is required.</div>
-                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email is not valid.</div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3 mt-2 text-white">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                <div class="col"><input 
+                                    style="text-transform:none"
+                                    class="form-control"
+                                    id="emailAddress" name="emailAddress" type="email" placeholder="Enter email address..." aria-label="Enter email address..."
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.emailAddress%>"
+                                        <%}%> 
+                                    />
                                 </div>
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.emailMsg%></span>
+                                <% } %>
+                                <div class="col"><input 
+                                    style="text-transform:none"
+                                    class="form-control" id="password" name="password" type="password" placeholder="Enter password..." aria-label="Enter password..." 
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.password%>"
+                                        <%}%> 
+                                     /></div>
+                                     <% if(typeof(errs) != 'undefined'){ %>
+                                        <span style="color: red"><%-errs.passwordMsg%></span>
+                                    <% } %>
+                                <div class="col-auto"><button class="btn btn-primary " id="submitButton" type="submit">Log In!</button></div>
+                                <!-- <h4 style="color: red; font-size: larger;"> dat </h4> -->
+                                
                             </div>
+
+
+
                             <!-- Submit error message-->
                             <!---->
                             <!-- This is what your users will see when there is-->

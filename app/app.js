@@ -2,7 +2,12 @@ const express = require('express')
 const cors=require('cors')
 const router = require('../routes/router')
 const app = express()
+const bodyParser = require('body-parser');
 
+    router.use(bodyParser.json())
+    .use(bodyParser.urlencoded({
+        extended: true
+    }));
 // cors middleware
 app.use(cors())
 // json request

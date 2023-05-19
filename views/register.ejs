@@ -33,25 +33,118 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
-                        <form class="form-signup" id="contactForm" action="/register" method="post">
+                       
+                        <form class="form-signup" id="contactForm" action="/register" method="post"
+                        enctype="multipart/form-data"
+                        >
                             <!-- Email address input-->
+
                             <div class="collum input-group-newsletter">
-                                <div class="col"><input class="form-control" id="firstName" type="text" name="firstName" placeholder="Enter firstName..." aria-label="Enter firstName..." /></div>
-                                <div class="col"><input class="form-control" id="lastName" type="text" name="lastName" placeholder="Enter lastName..." aria-label="Enter lastName..." /></div>
-                                <div class="col"><input class="form-control" id="lastName" type="text" name="lastName" placeholder="Enter lastName..." aria-label="Enter lastName..." /></div>
-                                <div class="col"><input class="form-control" id="address" type="text" name="address" placeholder="Enter address..." aria-label="Enter address..." /></div>
-                                <div class="col"><input class="form-control" id="city" type="text" name="city" placeholder="Enter city..." aria-label="Enter city..." /></div>
-                                <div class="col"><input class="form-control" id="state" type="text" name="state" placeholder="Enter state..." aria-label="Enter state..." /></div>
-                                <div class="col"><input class="form-control" id="zipcode" type="text" name="zipcode" placeholder="Enter zipcode..." aria-label="Enter zipcode..." /></div>
-                                <div class="col"><input class="form-control" id="emailAddress" type="email" name="emailAddress" placeholder="Enter emailAddress..." aria-label="Enter emailAddress..." data-sb-validations="required,email"/></div>
-                                <div class="col"><input class="form-control" id="password" type="password" name="password" placeholder="Enter password..." aria-label="Enter password..." /></div>
-                                <div class="col"><input class="form-control" id="confirmPassword" type="password" name="confirmPassword" placeholder="Enter confirmPassword..." aria-label="Enter confirmPassword..."/></div>
+                                <div class="col">
+
+                                    <input
+                                    style="text-transform:none"
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.firstName%>"
+                                        <%}%> 
+                                        class="form-control" id="firstName" type="text" name="firstName" placeholder="Enter firstName..." aria-label="Enter firstName..."
+                                        />
+                                    
+                                    
+                                    </div>
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.firstNameMsg%></span>
+                                <% } %>
+                                <div class="col"><input 
+                                    style="text-transform:none"
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.lastName%>"
+                                        <%}%> 
+                                    class="form-control" id="lastName" type="text" name="lastName" placeholder="Enter lastName..." aria-label="Enter lastName..."/></div>
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.lastNameMsg%></span>
+                                <% } %>
+                                
+                                <div class="col"><input 
+                                    style="text-transform:none"
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.address%>"
+                                        <%}%> 
+                                    class="form-control" id="address" type="text" name="address" placeholder="Enter address..." aria-label="Enter address..." /></div>
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.addressNameMsg%></span>
+                                <% } %>
+                                
+                                
+                                
+                                <div class="col"><input 
+                                    style="text-transform:none"
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.city%>"
+                                        <%}%> 
+                                    class="form-control" id="city" type="text" name="city" placeholder="Enter city..." aria-label="Enter city..." /></div>
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.cityMsg%></span>
+                                <% } %>
+                                
+                                
+                                <div class="col"><input 
+                                    style="text-transform:none"
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.state%>"
+                                        <%}%>
+                                    class="form-control" id="state" type="text" name="state" placeholder="Enter state..." aria-label="Enter state..." /></div>
+                                
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.stateMsg%></span>
+                                <% } %>
+                                <div class="col"><input 
+                                    style="text-transform:none"
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.zipcode%>"
+                                        <%}%>
+                                    class="form-control" id="zipcode" type="text" name="zipcode" placeholder="Enter zipcode..." aria-label="Enter zipcode..." /></div>
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.zipcode%></span>
+                                <% } %>
+                                <div class="col"><input
+                                    style="text-transform:none"
+                                    class="form-control" id="emailAddress" type="email" name="emailAddress" placeholder="Enter emailAddress..." aria-label="Enter emailAddress..." 
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.emailAddress%>"
+                                        <%}%>
+                                    /></div>
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.emailMsg%></span>
+                                <% } %>
+                                
+                                
+                                <div class="col"><input 
+                                    style="text-transform:none"
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.password%>"
+                                        <%}%>
+                                    class="form-control" id="password" type="password" name="password" placeholder="Enter password..." aria-label="Enter password..." /></div>
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.passwordMsg%></span>
+                                <% } %>
+                                
+                                <div class="col"><input
+                                    style="text-transform:none"
+                                    <% if(typeof(body) != 'undefined') {%> 
+                                        value="<%-body.confirmPassword%>"
+                                        <%}%>
+                                    class="form-control" id="confirmPassword" type="password" name="confirmPassword" placeholder="Enter confirmPassword..." aria-label="Enter confirmPassword..."/></div>
+                                <% if(typeof(errs) != 'undefined'){ %>
+                                    <span style="color: red"><%-errs.confirmPasswordMsg%></span>
+                                <% } %>
                                 <div class="col-auto"><button class="btn btn-primary " id="submitButton" type="submit">Register!</button></div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+            
         </section>
       
         <!-- Footer-->
