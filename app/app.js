@@ -3,6 +3,7 @@ const cors=require('cors')
 const router = require('../routes/router')
 const app = express()
 const bodyParser = require('body-parser');
+const bookRouter = require('../routes/bookRouter');
 
     router.use(bodyParser.json())
     .use(bodyParser.urlencoded({
@@ -21,6 +22,7 @@ app.use(express.static('public'))
 app.use(express.static('views'))
 
 app.use('/', router)
+app.use('/books',bookRouter)
 
 
 module.exports = app
