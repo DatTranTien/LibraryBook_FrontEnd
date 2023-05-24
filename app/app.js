@@ -4,6 +4,7 @@ const router = require('../routes/router')
 const app = express()
 const bodyParser = require('body-parser');
 const bookRouter = require('../routes/bookRouter');
+const authorRouter = require('../routes/authorRouter');
 
     router.use(bodyParser.json())
     .use(bodyParser.urlencoded({
@@ -23,6 +24,7 @@ app.use(express.static('views'))
 
 app.use('/', router)
 app.use('/books',bookRouter)
+app.use('/authors',authorRouter)
 
 
 module.exports = app

@@ -1,5 +1,5 @@
 const express = require('express')
-const { getBookHandler, addBookHandler, postBookhandler, editBookHandler, updateBookHandler, deleteBookHandler } = require('../handlers/bookHandler')
+const { getBookHandler, addBookHandler, postBookhandler, editBookHandler, updateBookHandler, deleteBookHandler, getAllBookId } = require('../handlers/bookHandler')
 const bookRouter = express.Router()
 let session = require('express-session')
 const multer = require('multer');
@@ -15,6 +15,7 @@ bookRouter.use(session({
 
 
 bookRouter.get('/',getBookHandler)
+
 bookRouter.post('/',multer().none(),postBookhandler)
 bookRouter.post('/update',multer().none(),updateBookHandler)
 bookRouter.get('/addBook',addBookHandler)

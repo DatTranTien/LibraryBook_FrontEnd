@@ -1,5 +1,5 @@
 let session = require('express-session')
-const { getBooks, postBook, getBookById, updateBookById, deleteById } = require('../services/bookService')
+const { getBooks, postBook, getBookById, updateBookById, deleteById, getBookIds } = require('../services/bookService')
 const { errorTemplate } = require('../templates/errorTemplate')
 const { successTemplate } = require('../templates/successTemplate')
 
@@ -123,4 +123,24 @@ const deleteBookHandler = async (req,res)=>{
     }
     
 }
-module.exports = {getBookHandler,addBookHandler,postBookhandler,editBookHandler,updateBookHandler,deleteBookHandler}
+const getAllBookId = async (req,res)=>{
+    console.log("first deleteBookHandler")
+    try {
+        session = req.session
+        req.headers.authorization = 'Bearer '+ session.token
+        const result = await getBookIds(req)
+    return successTemplate(res,'addAuthor',"Add an author",undefined, session, result.data.result)
+    } catch (e) {
+        return errorTemplate(
+            req,
+            res,
+            'books',
+            'Books',
+            e.message,
+            'undefined',
+            'undefined',
+        )
+    }
+    
+}
+module.exports = {getAllBookId,getBookHandler,addBookHandler,postBookhandler,editBookHandler,updateBookHandler,deleteBookHandler}

@@ -56,3 +56,7 @@ exports.deleteById = async(req)=>{
     }
     )
 }
+exports.getBookIds = async(req)=>{
+    headers(req)
+    return await axios.get(process.env.url + 'books/books/')
+}
