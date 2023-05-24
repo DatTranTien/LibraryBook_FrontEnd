@@ -15,7 +15,7 @@ router.use(session({
     saveUninitialized: true
   }))
   
-router.get('/',getHomeHandler)
+router.get('/',getHomeHandler) 
 // router.get('/about',(req,res)=>{
 //     res.render('about',{pagename:"About"})
 // })

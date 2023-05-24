@@ -32,7 +32,6 @@ exports.postLoginHandler =async (req,res)=>{
     session = req.session
     
     if (isEmpty(errors)) {
-        console.log("first")
         const result = await postLogin(req.body)
         session.name=result.data.user.firstName
             session.logged = result.data.logged

@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="/css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -24,15 +24,28 @@
                 <h4 class="mx-auto my-0 text-uppercase">Books</h4>
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-md-10 col-lg-8 mx-auto text-center text-white">
-                        <% if(typeof(data) != 'undefined'){ data.map(book=>{%>
-                            <p>Title: <%-book.title%></p>
-                            <p>Author: <%-book.author%></p>
-                            <p>ISBN: <%-book.ISBN%></p>
-                            <p>Number of page: <%-book.numberOfPages%></p>
-                            <p>Price: <%-book.price%></p>
-                            <p>Year Published: <%-book.yearPublished%></p>
-                            <hr/>
-                        <%})}%>
+                        <div class="nav-link">
+                            <a href="/books/addBook" alt="Add a book" title="Add a book">+ Add a book</a>
+                        </div>
+                        <hr/>
+                        <div class="container px-4 px-lg-5">
+                            <% if(typeof(data) != 'undefined'){ data.map(book=>{%>
+                                <span>
+                                    <a href="/books/<%-book._id%>">Edit this Book</a>
+                                </span>
+                                <span style="float: right;">
+                                    <a href="/books/delete/<%-book._id%>">Delete this Book</a>
+                                </span>
+                                
+                                <p>Title: <%-book.title%></p>
+                                <p>Author: <%-book.author%></p>
+                                <p>ISBN: <%-book.ISBN%></p>
+                                <p>Number of page: <%-book.numberOfPages%></p>
+                                <p>Price: <%-book.price%></p>
+                                <p>Year Published: <%-book.yearPublished%></p>
+                                <hr/>
+                            <%})}%>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,7 +55,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="/js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
